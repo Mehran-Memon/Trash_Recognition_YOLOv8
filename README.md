@@ -1,0 +1,1 @@
+# Trash_Recognition_YOLOv8
