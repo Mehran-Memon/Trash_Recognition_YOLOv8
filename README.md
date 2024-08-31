@@ -1,4 +1,4 @@
-# Garbage Detection Model Using YOLOv8
+# Garbage Detection Using YOLOv8
 
 This repository contains the code and resources for training and deploying a YOLOv8 model to detect various types of garbage. The model is designed to assist in automated garbage classification and waste management.
 
@@ -19,8 +19,34 @@ This repository contains the code and resources for training and deploying a YOL
 
 This project involves training a YOLOv8 model on a dataset of garbage images to develop an efficient garbage detection system. The model can detect and classify different types of waste, which is useful for various waste management applications.
 
-## Dataset
+| **Model**    | **Test Size** | **Parameters** | **FLOPs** | **mAP50** | **mAP50-95** |
+|--------------|---------------|----------------|-----------|-----------|--------------|
+| **YOLOv8-N** | 640           | 3.0M           | 8.1G      | 0.809     | 0.800        |
+| **YOLOv8-S** | 640           | 11.1M          | 28.4G     | 0.818     | 0.813        |
+| **YOLOv8-M** | 640           | 25.8M          | 78.7G     | 0.828     | 0.823        |
 
+## Trash Detection Dataset
+
+This dataset is used for training, validation, and testing of a trash detection model. Below is the detailed summary of the dataset.
+
+## Dataset Summary
+
+- **Total Images:** 2,573
+- **Dataset Split:**
+  - **Training Set:** 1,149 images (45%)
+  - **Validation Set:** 1,079 images (42%)
+  - **Test Set:** 345 images (13%)
+
+## Preprocessing Details
+
+- **Auto-Orient:** Applied
+- **Resize:** Stretched to 640x640 pixels
+
+## Augmentations
+
+- **No augmentations were applied.**
+
+# Dataset
 The dataset used for training is obtained from Roboflow. The code to download the dataset is provided in the `import_data.py` script.
 
 ### import_data.py
