@@ -52,9 +52,15 @@ The dataset used for training is obtained from Roboflow. The code to download th
 ### import_data.py
 
 ```python
+import os
+
+from dotenv import load_dotenv
 from roboflow import Roboflow
 
-rf = Roboflow(api_key="T0wFToAaOYWZDBERldKM")
+load_dotenv()
+
+api_key = os.environ["ROBOFLOW_API_KEY"]
+rf = Roboflow(api_key=api_key)
 project = rf.workspace("federico-andrea-rizzi-g1fjs").project("dataset-itis-cardano-trash-detection")
 version = project.version(1)
 dataset = version.download("yolov8")
@@ -77,9 +83,11 @@ The model is trained using the `train_model.py` script. The training is performe
 
 ```python
 from ultralytics import YOLO
+from pathlib import Path
 
-# Specify the path to your data.yaml file
-data_yaml_path = "D:\\Garbage Detection\\Trash-Detection-1\\data.yaml"
+project_root = Path(__file__).resolve().parent
+data_yaml = project_root / "data" / "data.yaml"
+weights = project_root / "models" / "best.pt"
 
 # Load the YOLOv8 model
 model = YOLO('yolov8m.pt')
